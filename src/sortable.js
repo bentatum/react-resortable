@@ -56,8 +56,8 @@ export default (Component) => {
       var height, topOffset
       var items = this.props.items
       const overEl = e.currentTarget // underlying element //TODO: not working for touch
-      const indexDragged = overEl.dataset.id + 0 // index of underlying element in the set DOM elements
-      const indexFrom = this.state.draggingIndex + 0
+      const indexDragged = Number(overEl.dataset.id) // index of underlying element in the set DOM elements
+      const indexFrom = Number(this.state.draggingIndex)
 
       height = overEl.getBoundingClientRect().height
 

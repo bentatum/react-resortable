@@ -31,16 +31,17 @@
     "sorting"
   ],
   "license": "UNLICENSED",
-  "main": "index.js",
+  "main": "dist/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/bentatum/react-resortable.git"
   },
   "scripts": {
-    "build": "babel src --out-dir lib",
+    "prebuild": "rm -rf dist",
+    "build": "babel -d dist/ src/",
+    "prepublish": "npm run lint && npm run test && npm run build",
     "preversion": "npm run build",
-    "start": "npm run build -- --watch",
-    "lint": "standard",
+    "lint": "standard src",
     "test": "npm run lint && jest --verbose"
   },
   "standard": {

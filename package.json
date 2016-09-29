@@ -1,22 +1,22 @@
 {
   "name": "react-resortable",
   "description": "Sortable React HOC",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Benjamin Tatum <bentatum@me.com>",
   "bugs": {
     "url": "https://github.com/bentatum/react-resortable/issues"
   },
   "devDependencies": {
-    "babel-cli": "^6.10.1",
-    "babel-eslint": "^6.1.2",
-    "babel-preset-es2015": "^6.9.0",
-    "babel-preset-react": "^6.11.1",
-    "babel-preset-stage-0": "^6.5.0",
+    "babel-cli": "^6.16.0",
+    "babel-eslint": "^7.0.0",
+    "babel-preset-es2015": "^6.16.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0",
     "commitizen": "^2.8.2",
     "cz-conventional-changelog": "^1.1.6",
     "expect": "^1.20.2",
     "jest-cli": "^15.1.1",
-    "react": "^15.3.1",
+    "react": "^15.3.2",
     "standard": "*",
     "validate-commit-msg": "^2.8.0"
   },

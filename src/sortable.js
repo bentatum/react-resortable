@@ -4,8 +4,8 @@ import { default as swapArrayElements } from './swapArrayElements'
 import { default as isMouseBeyond } from './isMouseBeyond'
 
 export default (Component) => {
-  var elementEdge = 0
-  var updateEdge = true
+  let elementEdge = 0
+  let updateEdge = true
 
   return React.createClass({
 
@@ -49,30 +49,28 @@ export default (Component) => {
       updateEdge = true
     },
 
-    dragOver (e) {
-      e.preventDefault()
-      var mouseBeyond
-      var positionX, positionY
-      var height, topOffset
-      var items = this.props.items
-      const overEl = e.currentTarget // underlying element //TODO: not working for touch
-      const indexDragged = Number(overEl.dataset.id) // index of underlying element in the set DOM elements
+    dragOver ({ clientX, clientY, type, currentTarget }) {
+      let mouseBeyond
+      let positionX, positionY
+      let height, topOffset
+      let items = this.props.items
+      const indexDragged = Number(currentTarget.dataset.id) // index of underlying element in the set DOM elements
       const indexFrom = Number(this.state.draggingIndex)
 
-      height = overEl.getBoundingClientRect().height
+      height = currentTarget.getBoundingClientRect().height
 
-      if (e.type === 'dragover') {
-        positionX = e.clientX
-        positionY = e.clientY
-        topOffset = overEl.getBoundingClientRect().top
+      if (type === 'dragover') {
+        positionX = clientX
+        positionY = clientY
+        topOffset = currentTarget.getBoundingClientRect().top
       }
 
-      if (e.type === 'touchmove') {
-        positionX = e.touches[0].pageX
-        positionY = e.touches[0].pageY
+      if (type === 'touchmove') {
+        positionX = touches[0].pageX
+        positionY = touches[0].pageY
 
         if (updateEdge) {
-          elementEdge = e.currentTarget.getBoundingClientRect().top
+          elementEdge = currentTarget.getBoundingClientRect().top
           updateEdge = false
         }
         // bad, I need to copy and then move
@@ -87,8 +85,8 @@ export default (Component) => {
       if (this.props.outline === 'column') {
         mouseBeyond = isMouseBeyond(
           positionX,
-          overEl.getBoundingClientRect().left,
-          overEl.getBoundingClientRect().width
+          currentTarget.getBoundingClientRect().left,
+          currentTarget.getBoundingClientRect().width
         )
       }
 
